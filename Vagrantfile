@@ -60,13 +60,14 @@ Vagrant::Config.run do |config|
 	chef.json = {
 		:lamp => {
 			:server_name => "localhost"
+		},
+		:mysql => {
+			:server_root_password => "root",
+			:server_repl_password => "root",
+			:server_debian_password => "root"
 		}
-		#,:mysql => {
-		#	:server_root_password => "[set password here]"
-		#}
 	}
   end
-
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
   #
