@@ -35,6 +35,18 @@ if node[:lamp][:install][:webgrind]
 	require_recipe "lamp::webgrind"
 end
 
+#sqlite
+case node['platform']
+when "centos", "redhat", "fedora"
+  #already there in centos, --with-pdo-sqlite=shared
+when "debian", "ubuntu"
+  package "php5-sqlite" do
+    action :install
+  end
+end
+
+require_recipe "lamp::apc"
+require_recipe "lamp::intl"
 
 # Build the site
 web_app node[:lamp][:server_name] do
